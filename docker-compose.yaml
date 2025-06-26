@@ -30,6 +30,8 @@ services:
       --rpclisten=0.0.0.0:16210
       --rpclisten-borsh=0.0.0.0:17210
       --rpclisten-json=0.0.0.0:18210
+    networks:
+      - caddy-proxy
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:18210/']
       interval: 30s
@@ -39,6 +41,7 @@ services:
 networks:
   caddy-proxy:
     external: true
+
 volumes:
   kaspad_mainnet:
   kaspad_testnet10:
