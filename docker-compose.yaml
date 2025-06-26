@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  kaspad_mainnet:
-    container_name: kaspad_mainnet
-    image: kaspanet/rusty-kaspad:latest
-    restart: unless-stopped
-    ports:
-      - '16111:16111/tcp'
-      - '16110:16110/tcp' # gRPC
-      - '17110:17110/tcp' # wRPC (borsh)
-      - '18110:18110/tcp' # wRPC (json)
-    volumes:
-      - kaspad_mainnet:/app/data/
+  # kaspad_mainnet:
+  #   container_name: kaspad_mainnet
+  #   image: kaspanet/rusty-kaspad:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - '16111:16111/tcp'
+  #     - '16110:16110/tcp' # gRPC
+  #     - '17110:17110/tcp' # wRPC (borsh)
+  #     - '18110:18110/tcp' # wRPC (json)
+  #   volumes:
+  #     - kaspad_mainnet:/app/data/
 
   kaspad_testnet10:
     container_name: kaspad-testnet10
@@ -43,5 +43,5 @@ networks:
     external: true
 
 volumes:
-  kaspad_mainnet:
+  # kaspad_mainnet:
   kaspad_testnet10:
