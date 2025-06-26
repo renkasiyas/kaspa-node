@@ -11,7 +11,7 @@ services:
   #     - '17110:17110/tcp' # wRPC (borsh)
   #     - '18110:18110/tcp' # wRPC (json)
   #   volumes:
-  #     - kaspad_mainnet:/app/data/
+  #     - kaspa_data_mainnet:/app/data/
 
   kaspad_testnet10:
     container_name: kaspad-testnet10
@@ -23,7 +23,7 @@ services:
       - '17210:17210/tcp' # wRPC (borsh)
       - '18210:18210/tcp' # wRPC (json)
     volumes:
-      - kaspad_testnet10:/app/data/
+      - kaspa_data_testnet:/app/data/
     command: >
       kaspad --yes --nologfiles --disable-upnp --utxoindex --testnet
       --listen=0.0.0.0:16211
@@ -43,5 +43,4 @@ networks:
     external: true
 
 volumes:
-  # kaspad_mainnet:
-  kaspad_testnet10:
+  kaspa_data_testnet:
