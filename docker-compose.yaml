@@ -38,7 +38,7 @@ services:
 
 networks:
   caddy-proxy:
-
+    external: true
 volumes:
   kaspad_mainnet:
   kaspad_testnet10:
