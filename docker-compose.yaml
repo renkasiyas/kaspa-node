@@ -33,7 +33,7 @@ services:
     networks:
       - caddy-proxy
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:18210/']
+      test: ['CMD-SHELL', 'nc -z localhost 18210']
       interval: 30s
       timeout: 5s
       retries: 3
