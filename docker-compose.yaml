@@ -36,6 +36,9 @@ services:
       timeout: 5s
       retries: 3
 
+networks:
+  caddy-proxy:
+
 volumes:
   kaspad_mainnet:
   kaspad_testnet10:
