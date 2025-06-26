@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  kaspad_mainnet:
+    container_name: kaspad_mainnet
+    image: kaspanet/rusty-kaspad:latest
+    restart: unless-stopped
+    ports:
+      - '16111:16111/tcp'
+      - '16110:16110/tcp' # gRPC
+      - '17110:17110/tcp' # wRPC (borsh)
+      - '18110:18110/tcp' # wRPC (json)
+    volumes:
+      - kaspad_mainnet:/app/data/
+
+  kaspad_testnet10:
+    container_name: kaspad-testnet10
+    image: kaspanet/rusty-kaspad:latest
+    restart: unless-stopped
+    ports:
+      - '16211:16211/tcp' # p2p
+      - '16210:16210/tcp' # gRPC
+      - '17210:17210/tcp' # wRPC (borsh)
+      - '18210:18210/tcp' # wRPC (json)
+    volumes:
+      - kaspad_testnet10:/app/data/
+    command: >
+      kaspad --yes --nologfiles --disable-upnp --utxoindex --testnet
+      --listen=0.0.0.0:16211
+      --rpclisten=0.0.0.0:16210
+      --rpclisten-borsh=0.0.0.0:17210
+      --rpclisten-json=0.0.0.0:18210
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:18210/']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  kaspad_mainnet:
+  kaspad_testnet10:
